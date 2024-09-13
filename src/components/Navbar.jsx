@@ -9,31 +9,38 @@ const Navbar = () => {
     const links = [
         {
             title: "About",
-            path :"/about"
+            path: "/about"
         },
         {
             title: "Services",
-            path :"/services"
+            path: "/services"
         },
         {
             title: "Contacts",
-            path :"/contacts"
+            path: "/contacts"
         },
         {
             title: "Blogs",
-            path :"/blogs"
+            path: "/blogs"
         },
     ]
-    const handler = ()=>{
+    const handler = () => {
         router.push('/login')
     }
+
+    if (pathName.includes('dashboard'))
+        return (
+            <div className='bg-green-400 p-6'>
+                <h1>Dashboard Layout</h1>
+            </div>
+        )
     return (
         <nav className="bg-red-500 px-6 py-4 flex justify-between items-center">
             <h6 className='text-white uppercase font-bold text-4xl'>Next Hero</h6>
             <ul className='flex justify-between items-center space-x-4'>
                 {/* <li><Link href={'/about'}>About</Link></li> */}
                 {
-                    links?.map((link)=><Link className={`${pathName === link?.path && 'text-cyan-400'}`} key={link.path} href={link.path}>{link.title}</Link>)
+                    links?.map((link) => <Link className={`${pathName === link?.path && 'text-cyan-400'}`} key={link.path} href={link.path}>{link.title}</Link>)
                 }
             </ul>
             <button onClick={handler} className='p-3 bg-white'>Login</button>
